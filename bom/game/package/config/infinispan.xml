@@ -1,0 +1,16 @@
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:7.0 http://www.infinispan.org/schemas/infinispan-config-7.0.xsd">
+  
+	<jgroups>
+		<stack-file name="udp" path="default-configs/default-jgroups-udp.xml" />
+	</jgroups>
+	
+ 	<cache-container default-cache="dist">
+     	<transport stack="udp" />
+     	<distributed-cache name="dist" mode="SYNC" owners="2">
+     		<eviction strategy="LRU" max-entries="1000000"  ></eviction>
+     		<expiration lifespan="600000" max-idle="60000" ></expiration>
+     	</distributed-cache>
+  	</cache-container>
+
+</infinispan>
